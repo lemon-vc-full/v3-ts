@@ -6,7 +6,11 @@ import IconsResolver from 'unplugin-icons/resolver'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import vue from '@vitejs/plugin-vue'
 import windiCSS from 'vite-plugin-windicss'
-import { resolve } from 'path'
+import { join } from 'path'
+
+function resolve(dir: string) {
+    return join(__dirname, dir)
+}
 
 export default defineConfig({
     plugins: [
@@ -21,7 +25,7 @@ export default defineConfig({
                     prefix: 'Icon',
                 }),
             ],
-            dts: resolve(`${__dirname}/src`, 'auto-imports.d.ts'),
+            dts: resolve('src/auto-imports.d.ts'),
         }),
         Components({
             extensions: ['vue', 'md'],
@@ -35,7 +39,7 @@ export default defineConfig({
                     enabledCollections: ['ep'],
                 }),
             ],
-            dts: resolve(`${__dirname}/src`, 'components.d.ts'),
+            dts: resolve('src/components.d.ts'),
         }),
         Icons({
             autoInstall: true,
@@ -45,7 +49,7 @@ export default defineConfig({
         alias: [
             {
                 find: '@',
-                replacement: resolve(__dirname, 'src'),
+                replacement: resolve('src'),
             },
         ],
     },

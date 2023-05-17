@@ -24,7 +24,13 @@
         "types": [
             // "element-plus/global"
         ],
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "baseUrl": "./",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
     },
     "include": [
         "src/**/*.ts",
